@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using NpgsqlTypes;
 using PostgreSQLWithEFCore.EntityConfiguration;
 using PostgreSQLWithEFCore.EntityContracts;
 
@@ -24,5 +25,15 @@ namespace PostgreSQLWithEFCore.Entities
         public required string FirstName { get; set; }
         public required string LastName { get; set; }
         public virtual ICollection<TenantUser> Tenants { get; set; }
+        public Address Address { get; set; }
+        public string[] Tags { get; set; }
+        public string Description { get; set; }
+        public string Metadata { get; set; }
+        public NpgsqlTsVector SearchVector { get; set; }
+    }
+
+    public class Address
+    {
+        public string City { get; set; }
     }
 }
